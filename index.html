@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twibbon Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-xl font-bold">Twibbon Generator</a>
+                <div class="hidden md:flex space-x-4">
+                    <a href="index.html" class="hover:text-gray-300">Home</a>
+                    <a href="about.html" class="hover:text-gray-300">About</a>
+                    <a href="panduan.html" class="hover:text-gray-300">Panduan</a>
+                </div>
+                <!-- Mobile Menu -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden bg-gray-700 md:hidden">
+            <a href="index.html" class="block px-4 py-2 hover:bg-gray-600">Home</a>
+            <a href="about.html" class="block px-4 py-2 hover:bg-gray-600">About</a>
+            <a href="panduan.html" class="block px-4 py-2 hover:bg-gray-600">Panduan</a>
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="text-3xl font-bold my-6 text-center">Twibbon Generator</h1>
+
+    <!-- Canvas -->
+     <!-- Main Section -->
+     <div class="w-full max-w-4xl bg-white rounded shadow-lg p-6 border border-gray-300 mx-auto">
+        <!-- Canvas Section -->
+        <div class="mb-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-700">Frame Twibbon</h2>
+            <div class="flex justify-center items-center border border-gray-300 rounded p-4 bg-gray-100">
+                <canvas id="twibbonCanvas" class="border border-gray-300"></canvas>
+            </div>
+        </div>
+
+    <!-- Controls -->
+    <h2 class="text-xl font-bold mb-4 text-gray-700">Controls</h2>
+    <div class="controls flex flex-wrap items-center justify-center gap-4 mb-6">
+        <!-- Upload Image -->
+        <label for="uploadImage" class="cursor-pointer bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 flex items-center">
+            <i class="fas fa-upload mr-2"></i> Upload Image
+        </label>
+        <input type="file" id="uploadImage" accept="image/*" class="hidden" />
+
+        <!-- Change Frame -->
+        <label for="changeFrameFile" class="cursor-pointer bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 flex items-center">
+            <i class="fas fa-image mr-2"></i> Change Frame
+        </label>
+        <input type="file" id="changeFrameFile" accept="image/*" class="hidden" />
+
+        <!-- Scale Slider -->
+        <div class="flex items-center gap-2">
+            <label for="scaleSlider" class="text-gray-700">Scale:</label>
+            <input type="range" id="scaleSlider" min="0.1" max="2" step="0.1" value="1" class="w-40" />
+        </div>
+
+        <!-- Rotate Button -->
+        <button id="rotateBtn" class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 flex items-center">
+            <i class="fas fa-sync-alt mr-2"></i> Rotate
+        </button>
+
+        <!-- Download Button -->
+        <button id="downloadBtn" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 flex items-center">
+            <i class="fas fa-download mr-2"></i> Download
+        </button>
+    </div>
+
+    <!-- Caption -->
+     <div class="mb-6">
+        <h2 class="text-xl font-bold mb-4 text-gray-700">Caption</h2>
+        <textarea id="caption" rows="5" placeholder="Add your caption here..." class="w-full border border-gray-300 rounded p-4 text-gray-700"></textarea>
+        <button id="copyCaptionBtn" class="bg-blue-500 text-white py-2 px-4 mt-2 rounded hover:bg-blue-600">
+            <i class="fas fa-copy mr-2"></i> Salin Caption
+        </button>
+    </div>
+</div>
+    
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4 w-full mt-auto">
+        &copy; Create By Muhamad Handika Mawardi
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

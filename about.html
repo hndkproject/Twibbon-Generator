@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Twibbon Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-xl font-bold">Twibbon Generator</a>
+                <div class="hidden md:flex space-x-4">
+                    <a href="index.html" class="hover:text-gray-300">Home</a>
+                    <a href="about.html" class="hover:text-gray-300">About</a>
+                    <a href="panduan.html" class="hover:text-gray-300">Panduan</a>
+                </div>
+                <!-- Mobile Menu -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden bg-gray-700 md:hidden">
+            <a href="index.html" class="block px-4 py-2 hover:bg-gray-600">Home</a>
+            <a href="about.html" class="block px-4 py-2 hover:bg-gray-600">About</a>
+            <a href="panduan.html" class="block px-4 py-2 hover:bg-gray-600">Panduan</a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 bg-white mt-10 rounded shadow">
+        <h1 class="text-3xl font-bold mb-4">About Twibbon Generator</h1>
+        <p class="text-lg leading-relaxed mb-4">
+            Twibbon Generator adalah platform yang mudah digunakan untuk membuat gambar yang dipersonalisasi dengan bingkai. 
+            Baik Anda mempromosikan acara, merayakan acara khusus, atau berbagi dukungan untuk suatu tujuan, 
+            alat kami membuatnya menjadi sederhana dan menyenangkan.
+        </p>
+        <p class="text-lg leading-relaxed">
+            Didesain dengan mempertimbangkan aksesibilitas dan kesederhanaan, Twibbon Generator 
+            memungkinkan Anda untuk mengunggah foto Anda sendiri, memilih bingkai, 
+            dan mengunduh gambar akhir-semuanya hanya dalam beberapa klik!
+        </p>
+        <h2 class="text-2xl font-semibold mt-6 mb-2">Features</h2>
+        <ul class="list-disc list-inside space-y-2">
+            <li>Unggah dan edit gambar dengan lancar.</li>
+            <li>Pilih dari berbagai bingkai yang telah dirancang sebelumnya..</li>
+            <li>Unduh Twibbon.</li>
+            <li>Desain responsif untuk pengguna desktop dan seluler..</li>
+        </ul>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-4 mt-10">
+        &copy; Create By Muhamad Handika Mawardi
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+</html>
