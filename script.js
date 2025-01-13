@@ -51,6 +51,9 @@ function redrawCanvas() {
         ctx.drawImage(twibbonFrame, 0, 0, canvas.width, canvas.height);
     }
 }
+// Event listener untuk tombol Download
+let imageUploaded = false; // Status gambar
+let frameUploaded = true; // Status frame 
 
 // Event listener untuk tombol Upload Image
 uploadImage.addEventListener("change", (event) => {
@@ -81,9 +84,11 @@ changeFrameFile.addEventListener("change", (event) => {
 
 // Event listener untuk slider scaling
 scaleSlider.addEventListener("input", (event) => {
-    scale = parseFloat(event.target.value); // Ambil nilai scaling dari slider
-    redrawCanvas(); // Gambar ulang canvas dengan skala baru
+    scale = parseFloat(event.target.value);
+    document.getElementById("scaleValue").innerText = scale.toFixed(1); // Perbarui tampilan nilai
+    redrawCanvas();
 });
+
 
 // Event listener untuk tombol Rotate
 rotateButton.addEventListener("click", () => {
@@ -91,33 +96,32 @@ rotateButton.addEventListener("click", () => {
     redrawCanvas(); // Gambar ulang dengan rotasi baru
 });
 
-// Event listener untuk tombol Download
-let imageUploaded = false; // Status gambar
-let frameUploaded = false; // Status frame
 
-// Update status ketika gambar diunggah
-document.getElementById("uploadImage").addEventListener("change", function () {
+
+
+// Event listener untuk gambar yang diunggah
+uploadImage.addEventListener("change", function () {
     if (this.files && this.files[0]) {
-        imageUploaded = true;
-    }
-});
-
-// Update status ketika frame diunggah
-document.getElementById("changeFrameFile").addEventListener("change", function () {
-    if (this.files && this.files[0]) {
-        frameUploaded = true;
-    }
-});
-
-// Validasi tombol download
-document.getElementById("downloadBtn").addEventListener("click", function () {
-    if (!imageUploaded || !frameUploaded) {
-        alert("Mohon upload gambar dan frame terlebih dahulu.");
+        imageUploaded = true; // Gambar sudah diunggah
     } else {
-        // Logika download file di sini
-        alert("File siap untuk diunduh!");
+        imageUploaded = false; // Tidak ada gambar diunggah
     }
 });
+
+downloadBtn.addEventListener("click", function () {
+    if (!imageUploaded || !frameUploaded) {
+        alert("Mohon upload gambar dan frame terlebih dahulu."); // Validasi gagal
+    } else {
+        // Jika validasi lolos, lanjutkan proses unduh
+        const dataURL = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = dataURL;
+        link.download = "twibbon.png";
+        link.click(); // Mulai proses unduhan
+    }
+});
+
+
 
 
 // Muat ulang canvas dengan frame default saat pertama kali dijalankan
@@ -136,3 +140,4 @@ document.getElementById("copyCaptionBtn").addEventListener("click", function () 
             alert("Gagal menyalin caption. Silakan salin secara manual.");
         });
 });
+
